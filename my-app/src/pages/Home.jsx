@@ -5,6 +5,7 @@ const axios = require('axios').default;
 const Home = (props) => {
   const [response, setResponse] = useState([]);
   const [search, setSearch] = useState("");
+  const [tagSearch, setTagSearch] = useState("");
 
 
   useEffect(() => {
@@ -54,9 +55,19 @@ const Home = (props) => {
         <input
           className="nameSearch"
           type="text"
+          value={search}
           placeholder="Search by name"
           onChange={(e) => {
             setSearch(e.target.value);
+          }}
+        />
+        <input
+          className="nameSearch"
+          type="text"
+          value={tagSearch}
+          placeholder="Search by tag"
+          onChange={(e) => {
+            setTagSearch(e.target.value)
           }}
         />
         <div className="students">{students}</div>

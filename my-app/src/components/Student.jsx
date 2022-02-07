@@ -19,13 +19,14 @@ const Student = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setTags(prev => [...prev, tag])
+    console.log(tags)
     setTag("")
   }
 
-  const mappedTags = tags.map(item => {
+  const mappedTags = tags.map((item,index) => {
     return (
-      <div>
-      <button>{item}</button>
+      <div key={index}>
+      <button className="newTag">{item}</button>
       </div>
     )
   })
