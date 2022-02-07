@@ -27,7 +27,7 @@ const Home = (props) => {
     return (
       <Student
         key = {index}
-        name = {student.firstName + student.lastName}
+        name = {student.firstName + " " + student.lastName}
         email = {student.email}
         company = {student.company}
         skill = {student.skill}
