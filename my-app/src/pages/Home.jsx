@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Student from "../components/Student";
+const axios = require('axios').default;
 
 const Home = (props) => {
   const [response, setResponse] = useState([]);
   const [search, setSearch] = useState("");
-  const axios = require("axios").default;
 
-  const options = {
-    method: "GET",
-    url: "https://api.hatchways.io/assessment/students",
-  };
 
   useEffect(() => {
     axios
-      .request(options)
+      .request({
+        method: "GET",
+        url: "https://api.hatchways.io/assessment/students"
+      })
       .then((response) => {
         // console.log(response.data.students);
         setResponse(response.data.students);

@@ -11,7 +11,6 @@ div {
 
 .student-info {
   font-family: 'Raleway', sans-serif;
-  color: grey;
 }
 
 .student-name {
@@ -55,3 +54,12 @@ img {
 }
 
 ::placeholder { color: darkgray; }
+
+.button {
+  color: darkgrey;
+  background-color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 70px;
+}
+

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/components/student.css";
 import { Container, Row, Col } from "react-bootstrap";
+import Grades from "./Grades";
 
 const Student = (props) => {
   const { name, pic, email, company, skill, grades } = props;
@@ -10,6 +11,14 @@ const Student = (props) => {
   const average = sumGrades / numberOfGrades;
   const nameUpperCase = name.toUpperCase()
 
+  const [show, setShow] = useState(null)
+
+  const onClick = () =>
+      show === "show"
+        ? setShow(null)
+        : setShow("show");
+  
+
   return (
     <>
       <Container fluid>
@@ -17,7 +26,7 @@ const Student = (props) => {
           <Col className="col1" xs={3}>
             <img src={pic} alt="student-pic" />
           </Col>
-          <Col xs={9}>
+          <Col xs={7}>
             <Row>
               <h1 className="student-name">{nameUpperCase}</h1>
             </Row>
@@ -29,10 +38,23 @@ const Student = (props) => {
                 Average: {average}
                 {"%"}
               </div>
+              {show === "show" ? (
+                <Grades
+                  grades={intGrades}
+                />
+              ) : null}
             </Row>
+          </Col>
+          <Col xs={2}>
+            
+            {show === null ? (
+              <button className="button" onClick={onClick}>+</button>
+            ) : <button className="button" onClick={onClick}>_</button>}
+
           </Col>
         </Row>
       </Container>
+
     </>
   );
 };
