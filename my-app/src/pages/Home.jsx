@@ -43,6 +43,7 @@ const Home = (props) => {
           skill={student.skill}
           grades={student.grades}
           pic={student.pic}
+          tags={[]}
         />
       );
     });

@@ -9,15 +9,26 @@ const Student = (props) => {
   const intGrades = grades.map((number) => Number(number));
   const sumGrades = intGrades.reduce((a, b) => a + b, 0);
   const average = sumGrades / numberOfGrades;
-  const nameUpperCase = name.toUpperCase()
+  const nameUpperCase = name.toUpperCase();
 
-  const [show, setShow] = useState(null)
+  const [show, setShow] = useState(null);
+  const [tag, setTag] = useState("");
+  const [tags, setTags] = useState([])
 
-  const onClick = () =>
-      show === "show"
-        ? setShow(null)
-        : setShow("show");
-  
+  const onClick = () => (show === "show" ? setShow(null) : setShow("show"));
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setTags(prev => [...prev, tag])
+    setTag("")
+  }
+
+  const mappedTags = tags.map(item => {
+    return (
+      <div>
+      <button>{item}</button>
+      </div>
+    )
+  })
 
   return (
     <>
@@ -38,23 +49,36 @@ const Student = (props) => {
                 Average: {average}
                 {"%"}
               </div>
-              {show === "show" ? (
-                <Grades
-                  grades={intGrades}
+              {mappedTags}
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  className="addTag"
+                  placeholder="Add a tag"
+                  value={tag}
+                  onChange={(e) => {
+                    setTag(e.target.value);
+                  }}
                 />
-              ) : null}
+                <button>Add Tag</button>
+              </form>
+
+              {show === "show" ? <Grades grades={intGrades} /> : null}
             </Row>
           </Col>
           <Col xs={2}>
-            
             {show === null ? (
-              <button className="button" onClick={onClick}>+</button>
-            ) : <button className="button" onClick={onClick}>_</button>}
-
+              <button className="button" onClick={onClick}>
+                +
+              </button>
+            ) : (
+              <button className="button" onClick={onClick}>
+                _
+              </button>
+            )}
           </Col>
         </Row>
       </Container>
-
     </>
   );
 };
