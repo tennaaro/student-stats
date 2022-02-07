@@ -13,23 +13,23 @@ const Student = (props) => {
 
   const [show, setShow] = useState(null);
   const [tag, setTag] = useState("");
-  const [tags, setTags] = useState([])
+  const [tags, setTags] = useState([]);
 
   const onClick = () => (show === "show" ? setShow(null) : setShow("show"));
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setTags(prev => [...prev, tag])
-    console.log(tags)
-    setTag("")
-  }
+    e.preventDefault();
+    setTags((prev) => [...prev, tag]);
+    console.log(tags);
+    setTag("");
+  };
 
-  const mappedTags = tags.map((item,index) => {
+  const mappedTags = tags.map((item, index) => {
     return (
       <div key={index}>
-      <button className="newTag">{item}</button>
+        <button className="newTag">{item}</button>
       </div>
-    )
-  })
+    );
+  });
 
   return (
     <>

@@ -7,7 +7,6 @@ const Home = (props) => {
   const [search, setSearch] = useState("");
   const [tagSearch, setTagSearch] = useState("");
 
-
   useEffect(() => {
     axios
       .request({
