@@ -61,7 +61,6 @@ const Student = (props) => {
                     setTag(e.target.value);
                   }}
                 />
-                <button>Add Tag</button>
               </form>
 
               {show === "show" ? <Grades grades={intGrades} /> : null}
