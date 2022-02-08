@@ -16,6 +16,7 @@ const Student = (props) => {
   const [tags, setTags] = useState([]);
 
   const onClick = () => (show === "show" ? setShow(null) : setShow("show"));
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setTags((prev) => [...prev, tag]);
