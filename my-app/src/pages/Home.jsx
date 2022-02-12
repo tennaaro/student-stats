@@ -60,7 +60,7 @@ const Home = (props) => {
             setSearch(e.target.value);
           }}
         />
-        <input
+        {/* <input
           className="nameSearch"
           type="text"
           value={tagSearch}
@@ -68,7 +68,7 @@ const Home = (props) => {
           onChange={(e) => {
             setTagSearch(e.target.value)
           }}
-        />
+        /> */}
         <div className="students">{students}</div>
       </section>
     </>
