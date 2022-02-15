@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Student from "../components/Student";
+import Search from "../components/Search";
 const axios = require('axios').default;
 
 const Home = (props) => {
   const [response, setResponse] = useState([]);
   const [search, setSearch] = useState("");
-  const [tagSearch, setTagSearch] = useState("");
+  // const [tagSearch, setTagSearch] = useState("");
 
   useEffect(() => {
     axios
@@ -48,27 +49,15 @@ const Home = (props) => {
       );
     });
 
+  
+
   return (
     <>
       <section>
-        <input
-          className="nameSearch"
-          type="text"
-          value={search}
-          placeholder="Search by name"
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
+        <Search 
+          search = {search}
+          setSearch = {setSearch}
         />
-        {/* <input
-          className="nameSearch"
-          type="text"
-          value={tagSearch}
-          placeholder="Search by tag"
-          onChange={(e) => {
-            setTagSearch(e.target.value)
-          }}
-        /> */}
         <div className="students">{students}</div>
       </section>
     </>
